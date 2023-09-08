@@ -97,6 +97,15 @@
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
         }
+        .edit-btn{
+            background-color: forestgreen;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
 
         .delete-btn:hover {
             background-color: #c0392b;
