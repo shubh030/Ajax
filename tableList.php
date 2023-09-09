@@ -10,20 +10,22 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-image: url('background-image.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
-        #header {
-            background-color: #3498db;
+        #header{
+            background-color: rgba(52, 152, 219, 0.8); /* Transparent blue background */
             color: white;
             padding: 20px;
             text-align: center;
         }
 
         #main {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
             border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             margin: 20px auto;
             max-width: 600px;
         }
@@ -97,8 +99,9 @@
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
         }
-        .edit-btn{
-            background-color: forestgreen;
+
+        .edit-btn {
+            background-color: #27ae60; /* Updated color */
             color: white;
             border: none;
             padding: 5px 10px;
@@ -111,64 +114,70 @@
             background-color: #c0392b;
         }
 
+        .edit-btn:hover {
+            background-color: #219653; /* Updated hover color */
+        }
+
+        /* Transparent Modal */
         #modal {
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    display: none;
-}
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            display: none;
+        }
 
-#modal-form {
-    background: #fff;
-    width: 30%;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px;
-    border-radius: 15px;
-}
+        #modal-form {
+            background: #fff;
+            width: 30%;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Added box shadow */
+        }
 
-#modal-form h2 {
-    margin: 0 0 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-}
+        #modal-form h2 {
+            margin: 0 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #000;
+        }
 
-#close-btn {
-    background: red;
-    color: white;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    cursor: pointer;
-}
+        #close-btn {
+            background: red;
+            color: white;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            cursor: pointer;
+        }
 
-#modal-form table {
-    width: 100%;
-}
+        #modal-form table {
+            width: 100%;
+        }
 
-#modal-form table td {
-    padding: 5px;
-}
+        #modal-form table td {
+            padding: 5px;
+        }
 
-#modal-form table .input-container {
-    display: flex;
-}
+        #modal-form table .input-container {
+            display: flex;
+        }
 
-#modal-form table .input-container input {
-    flex: 1;
-    margin-right: 10px;
-}
+        #modal-form table .input-container input {
+            flex: 1;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -179,6 +188,10 @@
         <tr>
             <td id="header">
                 <h1>PHP withAjax </h1>
+                <div id="search-bar">
+                    <label for="">Search:</label>
+                    <input type="text" id="search" autocomplete="off">
+                </div>
             </td>
         </tr>
         <tr>
@@ -321,6 +334,20 @@ $.ajax({
         }
     }
 });
+});
+//Live Search
+$("#search").on("keyup", function (){
+    var search_term =$(this).val();
+    $.ajax({
+         url:"ajax-live-search.php",
+         type:"POST",
+         data:{search:search_term},
+         success:function(data){
+            $("#table-data").html(data);
+
+         }
+    });
+
 });
 
         });
