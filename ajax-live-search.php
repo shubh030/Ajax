@@ -17,7 +17,7 @@ if (mysqli_num_rows($result) > 0) {
 
     while ($row = mysqli_fetch_assoc($result)) {
         $sno++; // Increment the serial number
-        $output .="<tr>
+        $output .= "<tr>
         <td>{$sno}</td>
         <td>{$row["fname"]} {$row["lname"]}</td>
         <td><button class='edit-btn' data-eid='{$row["id"]}'>Edit</button></td>

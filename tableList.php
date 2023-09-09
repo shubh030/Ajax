@@ -187,7 +187,7 @@
 
         <tr>
             <td id="header">
-                <h1>PHP withAjax </h1>
+                <h1>PHP jQuery & Ajax </h1>
                 <div id="search-bar">
                     <label for="">Search:</label>
                     <input type="text" id="search" autocomplete="off">
